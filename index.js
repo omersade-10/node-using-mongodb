@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { routes } from './src/routes/routes';
 const mongoose = require('mongoose');
 
 const app = express();
@@ -11,6 +12,8 @@ mongoose.connect('mongodb://localhost/productsdb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
+routes(app);
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
